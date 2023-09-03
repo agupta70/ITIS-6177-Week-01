@@ -1,14 +1,11 @@
-const http = require('http');
+const express = require('express')
+const app = express()
+const port = 4000
 
-const hostnameAdi = '127.0.0.1';
-const portNumber = 4000;
+app.get('/', (request, response) => {
+    response.send('Hello World!')
+})
 
-const serverAdi = http.createServer((request, response) => {
-    response.statusCode = 200;
-    response.setHeader('Content-Type', 'text/plain');
-    response.end('Hello World');
-});
-
-serverAdi.listen(portNumber, hostnameAdi, () => {
-    console.log(`Server is running at address http://${hostnameAdi}:${portNumber}/`);
-});
+app.listen(port, () => {
+    console.log(`The App is listening on port ${port}`)
+})
